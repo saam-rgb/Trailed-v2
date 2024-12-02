@@ -14,23 +14,13 @@ import { Link } from "react-router-dom";
 
 export const Blog = () => {
   const [blog, setBlog] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState("All");
 
   useEffect(() => {
     fetch("blogs.json")
       .then((res) => res.json())
       .then((data) => setBlog(data));
   }, []);
-  console.log(blog);
 
-  //   const filteredBags =
-  //     selectedCategories === "All"
-  //       ? bags
-  //       : bags.filter(
-  //           (item) => item.category === selectedCategories.toLocaleLowerCase()
-  //         );
-  //   console.log(selectedCategories);
-  //   console.log(filteredBags);
   return (
     <div className="my-10 md:px-10 px-2">
       <h2 className="text-3xl font-semibold mb-6">Blogs</h2>

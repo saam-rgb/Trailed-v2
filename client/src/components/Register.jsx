@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
+import { toast, Toaster } from "sonner";
 
 export const Register = () => {
+  const [message, setMessage] = useState("");
+  const { registerUser } = useAuth();
+
+  const navigate = useNavigate(toast.success(`User registered successfully`));
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = async (data) => {
+    try {
+      await registerUser(data.email, data.password);
+      navigate("/login");
+    } catch (error) {
+      toast.error(`Enter valid email and password`);
+    }
+  };
   return (
     <div className="flex h-[calc(100vh-120px)]  justify-center items-center">
       <div className="p-8 mx-auto max-w-sm border border-gray-400 shadow-sm rounded-md">
+        <Toaster richColors position="top-center" />
         <h2 className="text-3xl font-semibold mb-6">Register</h2>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -30,7 +45,7 @@ export const Register = () => {
               placeholder="Email"
               className="py-2 w-full px-3  border border-gray-300 rounded-sm text-black leading-tight focus:outline-none focus:shadow-sm"
             />
-            {errors.email && <span>This field is required</span>}
+            {errors && <span>This field is required</span>}
           </div>
           <div className="mb-4">
             <label
@@ -50,16 +65,15 @@ export const Register = () => {
               placeholder="Password"
               className="py-2 px-3 w-full border border-gray-300 rounded-sm text-black leading-tight focus:outline-none focus:shadow-sm"
             />
-            {errors.password && <span>This field is required</span>}
+            {message && <span>This field is required</span>}
             <div />
           </div>
           <div className="mb-2">
-            <Link
-              to="/"
+            <button
               type="submit"
               className="bg-gray-800 text-white gap-2 rounded py-2 px-3">
               Register
-            </Link>
+            </button>
           </div>
           <p className="mb-2 text-sm">
             Have an account?{" "}

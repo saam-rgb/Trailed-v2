@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
+import { toast, Toaster } from "sonner";
 
 export const Login = () => {
+  const [message, setMessage] = useState();
+  const { loginUser } = useAuth();
+  const navigate = useNavigate(toast.success("login successful"));
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await loginUser(data.email, data.password);
+      navigate("/");
+    } catch (error) {
+      toast.error(`Enter valid email and password`);
+    }
+  };
   return (
     <div className="flex h-[calc(100vh-120px)]  justify-center items-center">
       <div className="p-8 mx-auto max-w-sm border border-gray-400 shadow-sm rounded-md">
+        <Toaster richColors position="top-center" />
         <h2 className="text-3xl font-semibold mb-6">Login</h2>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -66,6 +79,7 @@ export const Login = () => {
               Register
             </Link>
           </p>
+          <p>{message}</p>
           <div className="mb-2 w-full flex justify-center items-center bg-gray-800 text-white gap-2 rounded py-2">
             <FaGoogle />
             <button>Google signin</button>
