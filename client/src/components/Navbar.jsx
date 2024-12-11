@@ -6,18 +6,25 @@ import { FaRegHeart, FaUserAstronaut } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "/logo.png";
+import { useAuth } from "../context/AuthContext";
 
 const dropdown = [
   { name: "Orders", href: "/orders" },
   { name: "Cart", href: "/cart" },
-  { name: "Logout", href: "/logout" },
+  { name: "Checkout", href: "/checkout" },
 ];
 
 export const Navbar = () => {
   const [selectDropdown, setSelectDropdown] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
   console.log(selectDropdown);
-  const currentUser = true;
+
+  const { currentUser, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header className="mx-auto max-w-screen-2xl  py-4 md:px-8 px-2">
       <nav className="flex items-center justify-between">
@@ -58,6 +65,13 @@ export const Navbar = () => {
                         </Link>
                       </li>
                     ))}
+                    <li
+                      onClick={() => handleLogout()}
+                      className="hover:bg-gray-100 py-1 px-4">
+                      <Link to="/login" className="text-sm block">
+                        Logout
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               )}

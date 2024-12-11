@@ -16,7 +16,13 @@ app.use(
 
 //*routes
 const bagRoutes = require("./src/bags/bag.routes");
+const orderRoutes = require("./src/orders/order.routes");
+const userRoutes = require("./src/users/user.routes");
+const adminRoutes = require("./src/stats/admin.stats");
 app.use("/api/bags", bagRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/auth", userRoutes);
+app.use("/api/admin", adminRoutes);
 
 const main = async () => {
   await mongoose.connect(process.env.DB_CONNECTION);

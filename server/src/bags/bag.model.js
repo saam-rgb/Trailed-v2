@@ -14,6 +14,6 @@ const bagSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const Bags = mongoose.model("Bags", bagSchema);
+const Bag = mongoose.model("Bag", bagSchema);
 
-module.exports = Bags;
+module.exports = Bag;

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { useCreateAnOrderMutation } from "../../redux/services/orderApi";
+import { toast, Toaster } from "sonner";
 
 export const Checkout = () => {
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = cartItems
     .reduce((acc, items) => acc + items.newPrice, 0)
@@ -14,10 +18,10 @@ export const Checkout = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const currentUser = true; //TODO: authContext
+  const [createAnOrder, { isLoading, error }] = useCreateAnOrderMutation();
+  const { currentUser } = useAuth();
   const [isChecked, setIsChecked] = useState(false);
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
     const newOrder = {
       name: data.name,
       email: currentUser?.email,
@@ -33,11 +37,24 @@ export const Checkout = () => {
       totalPrice,
     };
     console.log(newOrder);
+    try {
+      await createAnOrder(newOrder).unwrap();
+      alert("order placed success");
+      navigate("/orders");
+      toast.success("order placed success");
+    } catch (error) {
+      alert("Error placing order");
+
+      console.error(error);
+    }
   };
+
+  if (isLoading) return <div>Loading...</div>;
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
         <div className="container max-w-screen-lg mx-auto">
+          <Toaster richColors position="top-center" />
           <div>
             <div>
               <h2 className="font-semibold text-xl text-gray-600 mb-2">

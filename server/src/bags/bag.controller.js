@@ -1,9 +1,9 @@
-const Bags = require("./bag.model");
+const Bag = require("./bag.model");
 
 //* create a bag
 const postABag = async (req, res) => {
   try {
-    const newBag = await Bags({ ...req.body });
+    const newBag = await Bag({ ...req.body });
     newBag.save();
     res.status(200).send({ message: "Bag posted successfully", bag: newBag });
   } catch (error) {
@@ -14,7 +14,7 @@ const postABag = async (req, res) => {
 //*get all bags
 const getAllBags = async (req, res) => {
   try {
-    const bags = await Bags.find().sort({ createdAt: -1 });
+    const bags = await Bag.find().sort({ createdAt: -1 });
     res.status(200).send({ message: "Bag fetched successfully", bag: bags });
   } catch (error) {
     res.status(500).send({ message: "Failed to fetch all books" });
@@ -26,7 +26,7 @@ const getAllBags = async (req, res) => {
 const getSingleBag = async (req, res) => {
   try {
     const { id } = req.params;
-    const bag = await Bags.findById(id);
+    const bag = await Bag.findById(id);
     if (!bag) {
       res.status(404).send(`Book not found `);
     }
@@ -41,7 +41,7 @@ const getSingleBag = async (req, res) => {
 const updateABag = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedBag = await Bags.findByIdAndUpdate(id, req.body, {
+    const updatedBag = await Bag.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     if (!updatedBag) {
@@ -60,7 +60,7 @@ const updateABag = async (req, res) => {
 const deleteABag = async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedBag = await Bags.findByIdAndDelete(id);
+    const deletedBag = await Bag.findByIdAndDelete(id);
     if (!deletedBag) {
       res.status(404).send(`Book not found `);
     }

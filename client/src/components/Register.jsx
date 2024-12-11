@@ -7,7 +7,7 @@ import { toast, Toaster } from "sonner";
 
 export const Register = () => {
   const [message, setMessage] = useState("");
-  const { registerUser } = useAuth();
+  const { registerUser, googleSignIn } = useAuth();
 
   const navigate = useNavigate(toast.success(`User registered successfully`));
   const {
@@ -23,6 +23,17 @@ export const Register = () => {
       navigate("/login");
     } catch (error) {
       toast.error(`Enter valid email and password`);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      toast.error(`Error occured signin`);
+      setMessage("Error Google signin", error);
     }
   };
   return (
@@ -83,7 +94,7 @@ export const Register = () => {
           </p>
           <div className="mb-2 w-full flex justify-center items-center bg-gray-800 text-white gap-2 rounded py-2">
             <FaGoogle />
-            <button>Google signin</button>
+            <button onClick={() => handleGoogleSignIn()}>Google signin</button>
           </div>
         </form>
       </div>
