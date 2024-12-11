@@ -5,13 +5,10 @@ const Bag = require("../bags/bag.model");
 
 const router = express.Router();
 
-// Function to calculate admin stats
 router.get("/", async (req, res) => {
   try {
-    // 1. Total number of orders
     const totalOrders = await Order.countDocuments();
 
-    // 2. Total sales (sum of all totalPrice from orders)
     const totalSales = await Order.aggregate([
       {
         $group: {
@@ -21,17 +18,14 @@ router.get("/", async (req, res) => {
       },
     ]);
 
-    // 4. Trending books statistics:
     const trendingBagsCount = await Bag.aggregate([
-      { $match: { trending: true } }, // Match only trending books
-      { $count: "trendingBagsCount" }, // Return the count of trending books
+      { $match: { trending: true } },
+      { $count: "trendingBagsCount" },
     ]);
 
-    // If you want just the count as a number, you can extract it like this:
     const trendingBags =
       trendingBagsCount.length > 0 ? trendingBagsCount[0].trendingBagsCount : 0;
 
-    // 5. Total number of books
     const totalBags = await Bag.countDocuments();
 
     // 6. Monthly sales (group by month and sum total sales for each month)

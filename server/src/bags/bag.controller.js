@@ -15,7 +15,7 @@ const postABag = async (req, res) => {
 const getAllBags = async (req, res) => {
   try {
     const bags = await Bag.find().sort({ createdAt: -1 });
-    res.status(200).send({ message: "Bag fetched successfully", bag: bags });
+    res.status(200).send(bags);
   } catch (error) {
     res.status(500).send({ message: "Failed to fetch all books" });
     console.error(error);

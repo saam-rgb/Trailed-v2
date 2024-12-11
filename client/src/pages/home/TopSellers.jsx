@@ -18,16 +18,9 @@ export const TopSellers = () => {
   // const [bags, setBags] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState("All");
 
-  const { data: bagz = [] } = useFetchAllBagsQuery();
+  const { data: bags = [] } = useFetchAllBagsQuery();
 
-  const bags = bagz?.bag || [];
-
-  // useEffect(() => {
-  //   fetch("bags.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setBags(data));
-  // }, []);
-  // console.log(bags);
+  console.log(bags);
 
   const filteredBags =
     selectedCategories === "All"

@@ -10,6 +10,11 @@ import PrivateRoutes from "./PrivateRoutes";
 import Orders from "../pages/bags/Orders";
 import AdminRoutes from "./AdminRoutes";
 import AdminLogin from "../components/AdminLogin";
+import DashboardLayout from "../pages/dashboard/DashboardLayout";
+import Dashboard from "../pages/dashboard/Dashboard";
+import ManageItem from "../pages/dashboard/ManageItem";
+import AddBag from "../pages/dashboard/addBag/AddBag";
+import EditBag from "../pages/dashboard/editBag/EditBag";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +67,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <AdminRoutes>
-        <div>Dashboard</div>
+        <DashboardLayout />
       </AdminRoutes>
     ),
     children: [
@@ -70,7 +75,7 @@ const router = createBrowserRouter([
         path: "",
         element: (
           <AdminRoutes>
-            <div>Dashboard Home</div>
+            <Dashboard />
           </AdminRoutes>
         ),
       },
@@ -78,7 +83,7 @@ const router = createBrowserRouter([
         path: "add-bag",
         element: (
           <AdminRoutes>
-            <div>Add bags</div>
+            <AddBag />
           </AdminRoutes>
         ),
       },
@@ -86,7 +91,7 @@ const router = createBrowserRouter([
         path: "edit-bag/:id",
         element: (
           <AdminRoutes>
-            <div>Edit ag</div>
+            <EditBag />
           </AdminRoutes>
         ),
       },
@@ -94,7 +99,7 @@ const router = createBrowserRouter([
         path: "manage-bags",
         element: (
           <AdminRoutes>
-            <div>Manage bags</div>
+            <ManageItem />
           </AdminRoutes>
         ),
       },

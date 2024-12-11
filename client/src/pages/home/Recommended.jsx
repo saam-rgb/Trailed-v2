@@ -13,8 +13,8 @@ import { BagCard } from "../bags/BagCard";
 import { useFetchAllBagsQuery } from "../../redux/services/bagApi";
 
 export const Recommended = () => {
-  const { data: bagz = [] } = useFetchAllBagsQuery();
-  const bags = bagz.bag || [];
+  const { data: bags = [] } = useFetchAllBagsQuery();
+
   return (
     <div className="my-10 md:px-10 px-2">
       <h2 className="text-3xl font-semibold mb-6">Recommended</h2>
