@@ -9,7 +9,7 @@ PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://trailed-v2.vercel.app/"],
     credentials: true,
   })
 );
