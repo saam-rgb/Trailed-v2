@@ -1,4 +1,4 @@
 const getBaseUrl = () => {
-  return "http://localhost:5001";
+  return "https://trailed-v2-server.vercel.app" || "http://localhost:5001";
 };
 export default getBaseUrl;
