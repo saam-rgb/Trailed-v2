@@ -75,7 +75,7 @@ export const Cart = () => {
                             <button
                               onClick={() => handleRemoveFromCart(product)}
                               type="button"
-                              className="font-medium text-indigo-600 hover:text-indigo-500">
+                              className="font-medium text-red-600 hover:text-red-700">
                               Remove
                             </button>
                           </div>
@@ -102,7 +102,7 @@ export const Cart = () => {
           <div className="mt-6">
             <Link
               to="/checkout"
-              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+              className="flex items-center justify-center rounded-md border border-transparent bg-yellow-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary">
               Checkout
             </Link>
           </div>
@@ -111,7 +111,7 @@ export const Cart = () => {
               or
               <button
                 type="button"
-                className="font-medium text-indigo-600 hover:text-indigo-500 ml-1">
+                className="font-medium text-yellow-500 hover:text-primary ml-1">
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>
               </button>

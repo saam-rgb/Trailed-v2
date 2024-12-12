@@ -4,12 +4,17 @@ import getImgUrl from "../../utils/getImgUrl";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/cart/cartSlice";
+import { toast, Toaster } from "sonner";
 
 export const BagCard = ({ bag }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+    try {
+      dispatch(addToCart(product));
+    } catch (error) {
+      toast.error(`Error adding to cart. Please try again`);
+    }
   };
 
   return (
@@ -37,9 +42,9 @@ export const BagCard = ({ bag }) => {
               : bag.description}
           </p>
           <p className="font-medium mb-5">
-            ${bag.newPrice}{" "}
+            ₹ {bag.newPrice}{" "}
             <span className="line-through font-normal ml-2">
-              ${bag.oldPrice}
+              ₹ {bag.oldPrice}
             </span>
           </p>
           <button

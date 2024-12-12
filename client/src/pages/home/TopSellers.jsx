@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
 import { useFetchAllBagsQuery } from "../../redux/services/bagApi";
+import { Toaster } from "sonner";
 
 const categories = ["All", "Backpack", "Duffle", "Luggage"];
 
@@ -20,8 +21,6 @@ export const TopSellers = () => {
 
   const { data: bags = [] } = useFetchAllBagsQuery();
 
-  console.log(bags);
-
   const filteredBags =
     selectedCategories === "All"
       ? bags
@@ -30,8 +29,10 @@ export const TopSellers = () => {
         );
 
   return (
-    <div className="my-10 md:px-10 px-2">
+    <div className="my-10 md:px-10 px-2" id="top-sellers">
+      <Toaster richColors position="top-center" />
       <h2 className="text-3xl font-semibold mb-6">Top Sellers</h2>
+      <Toaster richColors position="top-center" />
       {/* category filter */}
       <div className="mb-8">
         <select
@@ -57,7 +58,7 @@ export const TopSellers = () => {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 40,
           },
           1024: {

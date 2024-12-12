@@ -36,16 +36,12 @@ export const Checkout = () => {
       productIds: cartItems.map((item) => item._id),
       totalPrice,
     };
-    console.log(newOrder);
     try {
       await createAnOrder(newOrder).unwrap();
-      alert("order placed success");
       navigate("/orders");
-      toast.success("order placed success");
+      toast.success("Order placed success");
     } catch (error) {
-      alert("Error placing order");
-
-      console.error(error);
+      toast.error("Error placing order");
     }
   };
 
@@ -58,10 +54,10 @@ export const Checkout = () => {
           <div>
             <div>
               <h2 className="font-semibold text-xl text-gray-600 mb-2">
-                Cash On Delevary
+                Cash On Delivery
               </h2>
-              <p className="text-gray-500 mb-2">Total Price: ${totalPrice}</p>
-              <p className="text-gray-500 mb-6">Items:{cartItems.length}</p>
+              <p className="text-gray-500 mb-2">Total Price : ₹ {totalPrice}</p>
+              <p className="text-gray-500 mb-6">Items : {cartItems.length}</p>
             </div>
 
             <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
@@ -135,7 +131,7 @@ export const Checkout = () => {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label htmlFor="country">Country / region</label>
+                      <label htmlFor="country">Country</label>
                       <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
                         <input
                           name="country"
@@ -144,40 +140,11 @@ export const Checkout = () => {
                           {...register("country", { required: true })}
                           className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
                         />
-                        <button
-                          tabIndex="-1"
-                          className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                          <svg
-                            className="w-4 h-4 mx-2 fill-current"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                          </svg>
-                        </button>
-                        <button
-                          tabIndex="-1"
-                          className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                          <svg
-                            className="w-4 h-4 mx-2 fill-current"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round">
-                            <polyline points="18 15 12 9 6 15"></polyline>
-                          </svg>
-                        </button>
                       </div>
                     </div>
 
                     <div className="md:col-span-2">
-                      <label htmlFor="state">State / province</label>
+                      <label htmlFor="state">State</label>
                       <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
                         <input
                           name="state"
@@ -186,33 +153,6 @@ export const Checkout = () => {
                           {...register("state", { required: true })}
                           className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
                         />
-                        <button className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                          <svg
-                            className="w-4 h-4 mx-2 fill-current"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                          </svg>
-                        </button>
-                        <button
-                          tabIndex="-1"
-                          className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                          <svg
-                            className="w-4 h-4 mx-2 fill-current"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round">
-                            <polyline points="18 15 12 9 6 15"></polyline>
-                          </svg>
-                        </button>
                       </div>
                     </div>
 
@@ -238,13 +178,13 @@ export const Checkout = () => {
                           className="form-checkbox"
                         />
                         <label htmlFor="billing_same" className="ml-2 ">
-                          I am aggree to the{" "}
-                          <Link className="underline underline-offset-2 text-blue-600">
+                          I agree to the{" "}
+                          <Link className="underline underline-offset-2 text-yellow-500">
                             Terms & Conditions
                           </Link>{" "}
                           and{" "}
-                          <Link className="underline underline-offset-2 text-blue-600">
-                            Shoping Policy.
+                          <Link className="underline underline-offset-2 text-yellow-500">
+                            Shopping Policy.
                           </Link>
                         </label>
                       </div>
@@ -254,8 +194,8 @@ export const Checkout = () => {
                       <div className="inline-flex items-end">
                         <button
                           disabled={!isChecked}
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                          Place an Order
+                          className="bg-primary hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+                          Place Order
                         </button>
                       </div>
                     </div>

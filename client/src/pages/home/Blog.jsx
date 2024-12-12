@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
-import { getBlogImgUrl } from "../../utils/getImgUrl";
+import getImgUrl from "../../utils/getImgUrl";
 import { Link } from "react-router-dom";
 
 export const Blog = () => {
@@ -22,7 +22,7 @@ export const Blog = () => {
   }, []);
 
   return (
-    <div className="my-10 md:px-10 px-2">
+    <div className="my-10 md:px-10 px-2" id="blogs">
       <h2 className="text-3xl font-semibold mb-6">Blogs</h2>
 
       <Swiper
@@ -66,7 +66,7 @@ export const Blog = () => {
                     </div>
                     <div className="">
                       <img
-                        src={getBlogImgUrl(content.image)}
+                        src={getImgUrl(content.image)}
                         alt={content.title}
                         className="sm:w-full sm:h-[200px] w-4 h-[100px] object-cover "
                       />

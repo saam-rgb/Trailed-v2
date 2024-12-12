@@ -8,7 +8,7 @@ import { toast, Toaster } from "sonner";
 export const Login = () => {
   const [message, setMessage] = useState();
   const { loginUser, googleSignIn } = useAuth();
-  const navigate = useNavigate(toast.success("login successful"));
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -19,6 +19,7 @@ export const Login = () => {
     try {
       await loginUser(data.email, data.password);
       navigate("/");
+      toast.success("login successful");
     } catch (error) {
       toast.error(`Enter valid email and password`);
     }
@@ -37,7 +38,7 @@ export const Login = () => {
 
   return (
     <div className="flex h-[calc(100vh-120px)]  justify-center items-center">
-      <div className="p-8 mx-auto max-w-sm border border-gray-400 shadow-sm rounded-md">
+      <div className="p-8 mx-auto w-full max-w-sm border border-gray-400 shadow-sm rounded-md">
         <Toaster richColors position="top-center" />
         <h2 className="text-3xl font-semibold mb-6">Login</h2>
         <form onSubmit={handleSubmit(onSubmit)}>

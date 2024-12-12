@@ -11,31 +11,39 @@ export const Footer = () => {
           {/* icon-navigation section */}
           <div className="md:w-1/2 w-full">
             <img src={logo} alt="logo" className="size-28 my-10 " />
-            <ul className="flex gap-4 ">
+            <ul className="flex gap-4 flex-wrap mb-4 md:mb-0 ">
               <li>
-                <a href="#" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#"
+                  className="hover:text-primary">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#top" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#top-sellers"
+                  className="hover:text-primary">
                   Top Sellers
                 </a>
               </li>
               <li>
-                <a href="#recommended" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#recommended"
+                  className="hover:text-primary">
                   Recommended
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#blogs"
+                  className="hover:text-primary">
                   Blogs
                 </a>
               </li>
             </ul>
           </div>
           {/* newsletter section */}
-          <div className="md:w-1/2 w-full">
+          <div className="md:w-1/2 w-full ">
             <p className="mb-4">
               Subscribe to our newsletter to recieve latest updates, news and
               offers.
@@ -46,7 +54,7 @@ export const Footer = () => {
                 placeholder="Enter your email"
                 className="w-full py-2 px-4 rounded-l-md focus:outline-none text-black"
               />
-              <button className="bg-primary py-2 px-4 rounded-r-md hover:bg-red-700">
+              <button className="bg-primary py-2 px-4 rounded-r-md hover:bg-yellow-500">
                 Subscribe
               </button>
             </div>
@@ -56,14 +64,18 @@ export const Footer = () => {
         <div className="container mx-auto flex md:flex-row flex-col items-center justify-between border-t border-gray-400 pt-6 ">
           {/* privacy section */}
           <div>
-            <ul className="flex gap-4 ">
+            <ul className="flex gap-4 mb-4 md:mb-0 ">
               <li>
-                <a href="#" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#"
+                  className="hover:text-primary">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#top" className="hover:text-primary">
+                <a
+                  href="https://trailed-v2.vercel.app/#"
+                  className="hover:text-primary">
                   Terms & Conditions
                 </a>
               </li>
@@ -72,21 +84,21 @@ export const Footer = () => {
           {/* social section */}
           <div className="flex gap-6">
             <a
-              href=""
+              href="https://saamjs.vercel.app/"
               target="blank"
               rel="noopener noreferrer"
               className="hover:text-primary">
               <FaFacebook size={24} />{" "}
             </a>
             <a
-              href=""
+              href="https://in.linkedin.com/in/saam-sheron"
               target="blank"
               rel="noopener noreferrer"
               className="hover:text-primary">
               <FaTwitter size={24} />{" "}
             </a>
             <a
-              href=""
+              href="https://www.instagram.com/saam_sheron/"
               target="blank"
               rel="noopener noreferrer"
               className="hover:text-primary">

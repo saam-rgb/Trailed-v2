@@ -9,7 +9,7 @@ export const Register = () => {
   const [message, setMessage] = useState("");
   const { registerUser, googleSignIn } = useAuth();
 
-  const navigate = useNavigate(toast.success(`User registered successfully`));
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,6 +21,7 @@ export const Register = () => {
     try {
       await registerUser(data.email, data.password);
       navigate("/login");
+      toast.success(`User registered successfully`);
     } catch (error) {
       toast.error(`Enter valid email and password`);
     }

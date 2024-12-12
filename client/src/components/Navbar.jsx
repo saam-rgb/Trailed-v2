@@ -6,6 +6,7 @@ import { FaRegHeart, FaUserAstronaut } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "/logo.png";
+import dp from "/catDP.png";
 import { useAuth } from "../context/AuthContext";
 
 const dropdown = [
@@ -17,7 +18,6 @@ const dropdown = [
 export const Navbar = () => {
   const [selectDropdown, setSelectDropdown] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(selectDropdown);
 
   const { currentUser, logout } = useAuth();
 
@@ -29,10 +29,11 @@ export const Navbar = () => {
     <header className="mx-auto max-w-screen-2xl  py-4 md:px-8 px-2">
       <nav className="flex items-center justify-between">
         {/* left section icon and search bar*/}
-        <div className="flex justify-between items-center md:gap-16 gap-4">
-          <Link to="/" className="flex justify-center items-start gap-2 ">
-            <img src={logo} alt="" className="size-6" />
-            <p className="text-xl font-bold font-secondary sm:block hidden">
+        <div className="flex justify-between items-start md:gap-16 gap-1">
+          <Link to="/" className="flex justify-center items-end gap-2 ">
+            <img src={logo} alt="" className="size-7" />
+
+            <p className="leading-none text-xl font-semibold font-primary sm:block hidden">
               Trailed
             </p>
           </Link>
@@ -49,13 +50,16 @@ export const Navbar = () => {
         <div className="flex gap-3 items-center justify-center">
           {currentUser ? (
             <div className="relative">
-              <button onClick={() => setSelectDropdown(!selectDropdown)}>
-                <FaUserAstronaut className="size-7 " />
-              </button>
+              <a onClick={() => setSelectDropdown(!selectDropdown)}>
+                <img
+                  src={dp}
+                  className="size-8 items-center rounded-full  ring-2 ring-gray-600 hover:ring-primary cursor-pointer"
+                />
+              </a>
               {selectDropdown && (
                 <div className="absolute right-0 bg-white mt-4 z-40 w-44 rounded-md border border-gray-300">
                   <ul className="py-2">
-                    {dropdown.map((item, index) => (
+                    {dropdown.map((item) => (
                       <li
                         onClick={() => setSelectDropdown(false)}
                         key={item.name}
@@ -87,7 +91,7 @@ export const Navbar = () => {
 
           <Link
             to="/cart"
-            className="flex bg-primary gap-2 text-white rounded py-1 px-4 focus:outline-none hover:bg-gray-900 ">
+            className="flex bg-primary gap-2 text-white rounded px-2 py-1 sm:px-4 focus:outline-none hover:bg-yellow-500 ">
             <IoCartOutline className="size-6" />
             <span className="">
               {cartItems.length > 0 ? cartItems.length : 0}
