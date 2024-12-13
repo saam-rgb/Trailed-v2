@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "/logo.png";
+import logoYellow from "/logoYellow.webp";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export const Footer = () => {
@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="container mx-auto flex md:flex-row flex-col justify-between items-center mb-10">
           {/* icon-navigation section */}
           <div className="md:w-1/2 w-full">
-            <img src={logo} alt="logo" className="size-28 my-10 " />
+            <img src={logoYellow} alt="logo" className="size-24 my-10 " />
             <ul className="flex gap-4 flex-wrap mb-4 md:mb-0 ">
               <li>
                 <a
@@ -54,7 +54,7 @@ export const Footer = () => {
                 placeholder="Enter your email"
                 className="w-full py-2 px-4 rounded-l-md focus:outline-none text-black"
               />
-              <button className="bg-primary py-2 px-4 rounded-r-md hover:bg-yellow-500">
+              <button className="bg-primary font-medium py-2 px-4 rounded-r-md hover:bg-accentYellow text-gray-800">
                 Subscribe
               </button>
             </div>

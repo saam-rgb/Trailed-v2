@@ -1,5 +1,4 @@
 import React from "react";
-import heroImg from "../../assets/heroImg.webp";
 import heroVid from "../../assets/heroVid.mp4";
 
 export const Hero = () => {
@@ -23,7 +22,7 @@ export const Hero = () => {
         </h2>
         <a
           href="#top-sellers"
-          className="bg-yellow-500 py-2 px-4 rounded-md hover:bg-yellow-400">
+          className="bg-accentYellow text-gray-800 font-semibold  py-2 px-4 rounded-md hover:bg-primary">
           Shop now
         </a>
       </div>

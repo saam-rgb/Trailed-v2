@@ -38,7 +38,7 @@ export const TopSellers = () => {
         <select
           name="category"
           id="category"
-          className="border bg-[#eaeaea] border-gray-400 rounded-md focus:outline-none px-4 py-2 "
+          className="border bg-[#eaeaea] border-gray-400  rounded-md focus:outline-none px-4 py-2 "
           onChange={(e) => setSelectedCategories(e.target.value)}>
           {categories.map((items, index) => (
             <option value={items} className="py-2 px-8" key={index}>

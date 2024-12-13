@@ -91,7 +91,7 @@ export const Navbar = () => {
 
           <Link
             to="/cart"
-            className="flex bg-primary gap-2 text-white rounded px-2 py-1 sm:px-4 focus:outline-none hover:bg-yellow-500 ">
+            className="flex bg-primary gap-2 font-medium rounded px-2 py-1 sm:px-4 focus:outline-none text-gray-800 hover:bg-accentYellow ">
             <IoCartOutline className="size-6" />
             <span className="">
               {cartItems.length > 0 ? cartItems.length : 0}

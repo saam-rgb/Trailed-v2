@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetOrdersByEmailQuery } from "../../redux/services/orderApi";
 import { useAuth } from "../../context/AuthContext";
+import Loading from "../../components/Loading";
 
 const Orders = () => {
   const { currentUser } = useAuth();
@@ -10,7 +11,7 @@ const Orders = () => {
     isError,
   } = useGetOrdersByEmailQuery(currentUser.email);
   console.log(orders);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error fetching orders</div>;
   return (
     <div className="container mx-auto p-6">

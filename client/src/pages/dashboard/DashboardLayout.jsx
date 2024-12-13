@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { HiViewGridAdd } from "react-icons/hi";
-import { MdOutlineManageHistory } from "react-icons/md";
+import { HiViewGrid } from "react-icons/hi";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import adminDP from "/adminDP.png";
 
 const DashboardLayout = () => {
   const handleLogout = () => {};
@@ -11,32 +12,14 @@ const DashboardLayout = () => {
       <aside className="hidden sm:flex sm:flex-col">
         <a
           href="/"
-          className="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
-          <img src="/fav-icon.png" alt="" />
+          className="inline-flex items-center justify-center h-20 w-20 bg-primary hover:bg-accentYellow focus:bg-accentYellow">
+          <img src="/logo.png" alt="" />
         </a>
         <div className="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
           <nav className="flex flex-col mx-4 my-6 space-y-4">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-              <span className="sr-only">Folders</span>
-              <svg
-                aria-hidden="true"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                />
-              </svg>
-            </a>
             <Link
               to="/dashboard"
-              className="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
+              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-accentYellow focus:bg-white  rounded-lg">
               <span className="sr-only">Dashboard</span>
               <svg
                 aria-hidden="true"
@@ -54,19 +37,19 @@ const DashboardLayout = () => {
             </Link>
             <Link
               to="/dashboard/add-bag"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-accentYellow focus:bg-white  rounded-lg">
               <span className="sr-only">Add Bag</span>
-              <HiViewGridAdd className="h-6 w-6" />
+              <IoIosAddCircleOutline className="h-6 w-6" />
             </Link>
             <Link
               to="/dashboard/manage-bags"
-              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+              className="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-accentYellow focus:bg-white  rounded-lg">
               <span className="sr-only">Documents</span>
-              <MdOutlineManageHistory className="h-6 w-6" />
+              <HiViewGrid className="h-6 w-6" />
             </Link>
           </nav>
           <div className="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700">
-            <button className="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+            <button className="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-accentYellow focus:bg-white  rounded-lg">
               <span className="sr-only">Settings</span>
               <svg
                 aria-hidden="true"
@@ -132,12 +115,12 @@ const DashboardLayout = () => {
             <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
               <span className="sr-only">User Menu</span>
               <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
-                <span className="font-semibold">Grace Simmons</span>
-                <span className="text-sm text-gray-600">Lecturer</span>
+                <span className="font-semibold">Saam Sheron</span>
+                <span className="text-sm text-gray-600">Admin & CEO</span>
               </div>
               <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
                 <img
-                  src="https://randomuser.me/api/portraits/women/68.jpg"
+                  src={adminDP}
                   alt="user profile photo"
                   className="h-full w-full object-cover"
                 />
@@ -200,10 +183,10 @@ const DashboardLayout = () => {
               <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>
               <h2 className="text-gray-600 ml-0.5">Trailed Inventory</h2>
             </div>
-            <div className="flex flex-col md:flex-row items-start justify-end -mb-3">
+            <div className="flex flex-col md:gap-6 gap-0 flex-wrap md:flex-row items-start justify-center -mb-3">
               <Link
                 to="/dashboard/manage-bags"
-                className="inline-flex px-5 py-3 text-purple-600 hover:text-purple-700 focus:text-purple-700 hover:bg-purple-100 focus:bg-purple-100 border border-purple-600 rounded-md mb-3">
+                className="inline-flex px-5 py-3 font-medium text-yellow-500 hover:text-primary focus:text-primary hover:bg-yellow-50 focus:bg-yellow-100 border border-yellow-500 rounded-md mb-3">
                 <svg
                   aria-hidden="true"
                   fill="none"
@@ -221,13 +204,13 @@ const DashboardLayout = () => {
               </Link>
               <Link
                 to="/dashboard/add-bag"
-                className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+                className="inline-flex px-5 py-3 font-medium text-gray-800 bg-primary hover:bg-accentYellow rounded-md mb-3">
                 <svg
                   aria-hidden="true"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  className="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                  className="flex-shrink-0 h-6 w-6 text-gray-800 -ml-1 mr-2">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

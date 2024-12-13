@@ -5,6 +5,7 @@ import getImgUrl from "../../utils/getImgUrl";
 import { useParams } from "react-router-dom";
 import { useFetchSingleBagQuery } from "../../redux/services/bagApi";
 import { FiShoppingCart } from "react-icons/fi";
+import Loading from "../../components/Loading";
 
 export const SingleBag = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export const SingleBag = () => {
   };
 
   // if
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error handling the page</div>;
   if (!bag) return <div>No book data found</div>;
   return (

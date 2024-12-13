@@ -5,12 +5,10 @@ import {
   useDeleteBagMutation,
   useFetchAllBagsQuery,
 } from "../../redux/services/bagApi";
+import { toast, Toaster } from "sonner";
 
 const ManageItem = () => {
-  const navigate = useNavigate();
-
   const { data: bags, refetch } = useFetchAllBagsQuery();
-  console.log(bags);
 
   const [deleteBag] = useDeleteBagMutation();
 
@@ -18,20 +16,17 @@ const ManageItem = () => {
   const handleDeleteBag = async (id) => {
     try {
       await deleteBag(id).unwrap();
-      alert("Bag deleted successfully!");
+      toast.success("Bag deleted successfully!");
       await refetch();
     } catch (error) {
       console.error("Failed to delete bag:", error.message);
-      alert("Failed to delete bag. Please try again.");
+      toast.error("Failed to delete bag. Please try again.");
     }
   };
 
-  // Handle navigating to Edit Bag page
-  const handleEditClick = (id) => {
-    navigate(`dashboard/edit-bag/${id}`);
-  };
   return (
     <section className="py-1 bg-blueGray-50">
+      <Toaster richColors position="top-center" />
       <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
           <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -43,7 +38,7 @@ const ManageItem = () => {
               </div>
               <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                 <button
-                  className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="bg-primary text-gray-800 active:bg-accentYellow hover:bg-accentYellow text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button">
                   See all
                 </button>
@@ -87,17 +82,17 @@ const ManageItem = () => {
                         {bag.category}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        ${bag.newPrice}
+                        ₹ {bag.newPrice}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-4">
                         <Link
                           to={`/dashboard/edit-bag/${bag._id}`}
-                          className="font-medium text-indigo-600 hover:text-indigo-700 mr-2 hover:underline underline-offset-2">
+                          className="font-medium text-accentYellow hover:text-yellow-600 mr-2 hover:underline underline-offset-2">
                           Edit
                         </Link>
                         <button
                           onClick={() => handleDeleteBag(bag._id)}
-                          className="font-medium bg-red-500 py-1 px-4 rounded-full text-white mr-2">
+                          className="font-medium bg-red-500 hover:bg-red-600 py-1 px-4 rounded-full text-white mr-2">
                           Delete
                         </button>
                       </td>

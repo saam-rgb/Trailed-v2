@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useCreateAnOrderMutation } from "../../redux/services/orderApi";
 import { toast, Toaster } from "sonner";
+import Loading from "../../components/Loading";
 
 export const Checkout = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export const Checkout = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
@@ -194,7 +195,7 @@ export const Checkout = () => {
                       <div className="inline-flex items-end">
                         <button
                           disabled={!isChecked}
-                          className="bg-primary hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+                          className="bg-primary hover:bg-accentYellow text-gray-800 font-semibold py-2 px-4 rounded">
                           Place Order
                         </button>
                       </div>

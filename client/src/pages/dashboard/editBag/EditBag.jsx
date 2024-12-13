@@ -10,6 +10,7 @@ import Loading from "../../../components/Loading";
 import InputField from "../addBag/InputField";
 import SelectField from "../addBag/SelectField";
 import axios from "axios";
+import { toast, Toaster } from "sonner";
 
 const EditBag = () => {
   const { id } = useParams();
@@ -51,17 +52,18 @@ const EditBag = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      alert("success updating bag");
+      toast.success("success updating bag");
       await refetch();
     } catch (error) {
-      console.log("Failed to update bag.", error);
-      alert("Failed to update bag.");
+      console.error("Failed to update bag.", error);
+      toast.error("Failed to update bag.");
     }
   };
   if (isLoading) return <Loading />;
   if (isError) return <div>Error fetching bag data</div>;
   return (
     <div className="max-w-lg mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
+      <Toaster richColors position="top-center" />
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Bag</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,7 +132,7 @@ const EditBag = () => {
 
         <button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white font-bold rounded-md">
+          className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
           Update Bag
         </button>
       </form>

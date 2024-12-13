@@ -5,3 +5,7 @@
 video::-webkit-media-controls {
   display: none !important;
 }
+*::selection {
+  color: black;
+  background-color: #ffd000a4;
+}

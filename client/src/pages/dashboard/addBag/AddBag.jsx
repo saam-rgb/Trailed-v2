@@ -3,6 +3,7 @@ import InputField from "./InputField";
 import SelectField from "./SelectField";
 import { useForm } from "react-hook-form";
 import { useAddBagMutation } from "../../../redux/services/bagApi";
+import { toast, Toaster } from "sonner";
 
 const AddBag = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -22,13 +23,13 @@ const AddBag = () => {
     };
     try {
       await addBag(newBagData).unwrap();
-      alert("Bag added successfully");
+      toast.success("Bag added successfully");
       reset();
       setImageFile(null);
       setImageFileName("");
     } catch (error) {
       console.error(error);
-      alert("Failed to add book. Try again");
+      toast.error("Failed to add book. Try again");
     }
   };
 
@@ -41,6 +42,7 @@ const AddBag = () => {
   };
   return (
     <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
+      <Toaster richColors position="top-center" />
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Book</h2>
 
       {/* Form starts here */}

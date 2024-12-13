@@ -71,7 +71,7 @@ const Dashboard = () => {
           </div>
           <div>
             <span className="block text-2xl font-bold">
-              ${data?.totalSales}
+              ₹ {data?.totalSales}
             </span>
             <span className="block text-gray-500">Total Sales</span>
           </div>
@@ -286,7 +286,7 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-col row-span-3 bg-white shadow rounded-lg">
           <div className="px-6 py-5 font-semibold border-b border-gray-100">
-            Students by type of studying
+            Students by type of bag they like.
           </div>
           <div className="p-4 flex-grow">
             <div className="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
@@ -295,7 +295,6 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      
     </>
   );
 };
