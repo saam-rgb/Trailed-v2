@@ -30,29 +30,31 @@ export const BagCard = ({ bag }) => {
           </Link>
         </div>
 
-        <div>
+        <div className="flex flex-col justify-between h-full py-6">
           <Link to={`/bags/${bag._id}`}>
             <h3 className="text-xl font-semibold hover:text-primary mb-3">
               {bag.title}
             </h3>
           </Link>
           <p className="text-gray-600 mb-5">
-            {bag.description.length > 80
-              ? `${bag.description.slice(0, 80)}...`
+            {bag.description.length > 30
+              ? `${bag.description.slice(0, 20)}...`
               : bag.description}
           </p>
-          <p className="font-medium mb-5">
-            ₹ {bag.newPrice}{" "}
-            <span className="line-through font-normal ml-2">
-              ₹ {bag.oldPrice}
-            </span>
-          </p>
-          <button
-            className="btn-primary px-6 space-x-1 flex items-center gap-1  "
-            onClick={() => handleAddToCart(bag)}>
-            <FiShoppingCart className="" />
-            <span>Add to Cart</span>
-          </button>
+          <div>
+            <p className="font-medium mb-5">
+              ₹ {bag.newPrice}{" "}
+              <span className="line-through font-normal ml-2">
+                ₹ {bag.oldPrice}
+              </span>
+            </p>
+            <button
+              className="btn-primary px-6 space-x-1 flex items-center gap-1  "
+              onClick={() => handleAddToCart(bag)}>
+              <FiShoppingCart className="" />
+              <span>Add to Cart</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

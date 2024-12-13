@@ -60,7 +60,7 @@ export const Cart = () => {
                             <h3>
                               <Link to="/">{product.title}</Link>
                             </h3>
-                            <p className="sm:ml-4">${product.newPrice}</p>
+                            <p className="sm:ml-4">₹ {product.newPrice}</p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500 capitalize">
                             <strong>Category: </strong> {product.category}
