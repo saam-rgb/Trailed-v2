@@ -2,18 +2,18 @@
 
 ## Overview
 
-Trailed is an e-commerce application built using the MERN stack (MongoDB, Express.js, React, and Node.js). This project is designed to provide users with a seamless shopping experience while offering admins a secure platform to manage inventory efficiently.
+Trailed is a luggage, backpack and duffle e-commerce application built using the MERN stack (MongoDB, Express.js, React, and Node.js). This project is designed to provide users with a seamless shopping experience while offering admins a secure platform to manage inventory efficiently.
 
 ## Features
 
 ### User Features
 
-- **Product Browsing**: Explore a wide range of bags available for purchase.
-- **Cart Management**: Add or remove items from the cart with ease.
+- **Product Browsing**: Explore a wide range of available bags.
+- **Cart Management**: Add or remove items easily from the cart.
 - **Checkout System**: Place orders securely with a cash-on-delivery option.
 - **User Authentication**: Secure login and registration using Firebase.
 - **Google Authentication**: Easy login using Google OAuth via Firebase.
-- **Private Routes**: Restrict access to checkout and orders display pages for non-logged-in users.
+- **Private Routes**: Restrict access to checkout and order display pages for non-logged-in users.
 
 ### Admin Features
 
@@ -51,20 +51,20 @@ Trailed is an e-commerce application built using the MERN stack (MongoDB, Expres
 
 - **JWT (JSON Web Tokens)**: For secure authentication.
 - **Bcrypt**: For encrypting passwords.
-- **Mongoose**: For object data modeling (ODM) with MongoDB.
+- **Mongoose**: For object data modelling (ODM) with MongoDB.
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo/trailed.git
+   git clone https://github.com/saam-rgb/Trailed-v2.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd trailed
+   cd Trailed-v2
    ```
 
 3. Install dependencies for both client and server:
@@ -81,7 +81,7 @@ Trailed is an e-commerce application built using the MERN stack (MongoDB, Expres
 
    - Create a `.env` file in the `server` directory and add the following:
      ```env
-     PORT=5000
+     PORT=5001
      MONGO_URI=your_mongo_db_connection_string
      JWT_SECRET=your_jwt_secret
      ```
@@ -107,7 +107,7 @@ Trailed is an e-commerce application built using the MERN stack (MongoDB, Expres
    npm run dev
    ```
 
-6. Open your browser and navigate to `http://localhost:3000` to access the application.
+6. Open your browser and navigate to `http://localhost:5173` to access the application.
 
 ## Folder Structure
 
@@ -145,14 +145,14 @@ Trailed is an e-commerce application built using the MERN stack (MongoDB, Expres
 
 ### User Routes
 
-- **POST** `/api/users/login`: Authenticate user and return JWT.
+- **POST** `/api/users/login`: Authenticate user.
 - **POST** `/api/users/register`: Register a new user.
 - **GET** `/api/products`: Fetch all products.
 - **POST** `/api/orders`: Place an order.
 
 ### Admin Routes
 
-- **POST** `/api/admin/login`: Admin authentication.
+- **POST** `/api/admin/login`: Admin authentication and return JWT.
 - **POST** `/api/admin/products`: Add a new product.
 - **PUT** `/api/admin/products/:id`: Update product details.
 - **DELETE** `/api/admin/products/:id`: Delete a product.
