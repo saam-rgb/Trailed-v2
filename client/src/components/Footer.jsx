@@ -1,6 +1,6 @@
 import React from "react";
 import logoYellow from "/logoYellow.webp";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -84,7 +84,7 @@ export const Footer = () => {
           {/* social section */}
           <div className="flex gap-6">
             <a
-              href="https://saamjs.vercel.app/"
+              href="https://saam-sheron.vercel.app/"
               target="blank"
               rel="noopener noreferrer"
               className="hover:text-primary">
@@ -95,7 +95,7 @@ export const Footer = () => {
               target="blank"
               rel="noopener noreferrer"
               className="hover:text-primary">
-              <FaTwitter size={24} />{" "}
+              <FaLinkedin size={24} />{" "}
             </a>
             <a
               href="https://www.instagram.com/saam_sheron/"
